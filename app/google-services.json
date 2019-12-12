@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "808116441721",
+    "firebase_url": "https://my-laundry-1c152.firebaseio.com",
+    "project_id": "my-laundry-1c152",
+    "storage_bucket": "my-laundry-1c152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808116441721:android:af88de799407ec4c3efaa8",
+        "android_client_info": {
+          "package_name": "com.beitshean.mylaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808116441721-59a4jrsa7tje5pmgf5vq6r9g0m47olhb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beitshean.mylaundry",
+            "certificate_hash": "4f113f083d7a3268cd65fc73df96d73260cfcf04"
+          }
+        },
+        {
+          "client_id": "808116441721-g16g0amno4fdrdsp5tj20imdefj6rp7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALlziS9oIQHBjPXiG-qUquEWTKTIOYfy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808116441721-g16g0amno4fdrdsp5tj20imdefj6rp7e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
