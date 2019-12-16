@@ -22,8 +22,6 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
 
     EditText email_edit_text, password_edit_text, confirm_password_edit_text;
     private FirebaseAuth mAuth;
-    Button create_account_button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
