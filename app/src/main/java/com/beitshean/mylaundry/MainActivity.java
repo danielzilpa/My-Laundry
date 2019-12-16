@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.login_create_new_account_button).setOnClickListener(this);
         findViewById(R.id.login_connect_button).setOnClickListener(this);
 
+        progress_bar.setVisibility(View.INVISIBLE);
     }
 
     private void userLogin() {
@@ -66,11 +68,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        progress_bar.setVisibility(View.VISIBLE);
+
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                progress_bar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, UserHomePageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
