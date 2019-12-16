@@ -26,6 +26,7 @@ public class UserHomePageActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.uho_my_orders_button:
+                startActivity(new Intent(this, UserExistingOrdersActivity.class));
                 break;
         }
     }
