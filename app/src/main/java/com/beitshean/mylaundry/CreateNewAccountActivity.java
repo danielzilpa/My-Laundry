@@ -3,7 +3,6 @@ package com.beitshean.mylaundry;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -15,10 +14,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class CreateNewAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText private_name_edit_text, last_name_edit_text, email_edit_text, phone_number_edit_text, address_edit_text, password_edit_text, confirm_password_edit_text;
+    EditText email_edit_text, password_edit_text, confirm_password_edit_text;
     private FirebaseAuth mAuth;
     Button create_account_button;
 
@@ -33,7 +33,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         confirm_password_edit_text = (EditText) findViewById(R.id.cna_confirm_password_edit_text);
         mAuth = FirebaseAuth.getInstance();
 
-        findViewById(R.id.cna_create_account_button).setOnClickListener(this);
+        findViewById(R.id.login_connect_button).setOnClickListener(this);
 
     }
 
@@ -56,7 +56,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         }
 
         if(confirm_password.isEmpty()) {
-            confirm_password_edit_text.setError("אנא הכנס אמת סיסמא");
+            confirm_password_edit_text.setError("אנא אמת סיסמא");
             confirm_password_edit_text.requestFocus();
             return;
         }
@@ -67,8 +67,8 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
             return;
         }
 
-        if(password.length() < 6) {
-            password_edit_text.setError("הסיסמא צריכה להיות בת 7 תווים לפחות");
+        if(password.length() < 5) {
+            password_edit_text.setError("הסיסמא צריכה להיות בת 6 תווים לפחות");
             password_edit_text.requestFocus();
             return;
         }
@@ -84,6 +84,14 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "ההרשמה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+
+                } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                    email_edit_text.setError("אימייל זה בשימוש");
+                    email_edit_text.requestFocus();
+                    return;
+
+                }else {
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -94,7 +102,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
 
         switch (view.getId()){
 
-            case R.id.cna_create_account_button:
+            case R.id.login_connect_button:
                 registerUser();
                 break;
         }
