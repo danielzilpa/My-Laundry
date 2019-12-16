@@ -7,26 +7,65 @@
     tools:context=".UserHomePageActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="523dp"
-        android:layout_height="152dp"
+        android:id="@+id/uho_my_laundry_image"
+        android:layout_width="295dp"
+        android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_bias="0.06"
+        app:srcCompat="@drawable/my_laundry" />
 
     <TextView
-        android:id="@+id/cna_confirm_password_text_view"
-        android:layout_width="547dp"
-        android:layout_height="116dp"
-        android:text="user home page"
+        android:id="@+id/uho_hellow_text_view"
+        android:layout_width="75dp"
+        android:layout_height="43dp"
+        android:text="שלום"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193" />
+
+    <Button
+        android:id="@+id/uho_make_new_order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ביצוע הזמנה חדשה"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
+    <Button
+        android:id="@+id/uho_my_orders_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ההזמנות שלי"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/uho_disconnect_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="התנתק"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintVertical_bias="0.956" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
