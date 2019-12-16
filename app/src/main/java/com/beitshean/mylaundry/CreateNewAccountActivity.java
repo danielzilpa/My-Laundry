@@ -68,7 +68,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         }
 
         if(password.length() < 6) {
-            password_edit_text.setError("הסיסמא צריכה להיות בת 6 תווים לפחות");
+            password_edit_text.setError("הסיסמא צריכה להיות בת 7 תווים לפחות");
             password_edit_text.requestFocus();
             return;
         }
