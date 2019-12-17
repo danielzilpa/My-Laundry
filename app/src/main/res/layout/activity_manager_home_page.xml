@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagerHomePageActivity">
+    tools:context=".ManagerHomePageActivity"
+    android:background="@drawable/my_laundry_background3">
 
     <Button
         android:id="@+id/mho_existing_orders_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="הזמנות קיימות"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +25,7 @@
         android:id="@+id/mho_sum_materials_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="מלאי חומרים"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,6 +38,7 @@
         android:id="@+id/mho_sum_cash_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="מצב הקופה"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +51,7 @@
         android:id="@+id/mho_disconnect_button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="התנתק"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,15 +74,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.193" />
 
-    <ImageView
-        android:id="@+id/mho_my_laundry_image2"
-        android:layout_width="295dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06"
-        app:srcCompat="@drawable/my_laundry" />
 </androidx.constraintlayout.widget.ConstraintLayout>

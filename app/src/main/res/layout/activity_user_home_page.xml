@@ -5,19 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
-    tools:context=".UserHomePageActivity">
-
-    <ImageView
-        android:id="@+id/uho_my_laundry_image"
-        android:layout_width="295dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06"
-        app:srcCompat="@drawable/my_laundry" />
+    tools:context=".UserHomePageActivity"
+    android:background="@drawable/my_laundry_background3">
 
     <TextView
         android:id="@+id/uho_hellow_text_view"
@@ -36,6 +25,7 @@
         android:id="@+id/uho_make_new_order_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="ביצוע הזמנה חדשה"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +39,7 @@
         android:id="@+id/uho_my_orders_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="ההזמנות שלי"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +51,7 @@
         android:id="@+id/uho_disconnect_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:text="התנתק"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
