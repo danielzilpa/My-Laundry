@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText email_edit_text, password_edit_text;
     ProgressBar progress_bar;
 
+    ViewDatabase current_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,10 +36,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password_edit_text = (EditText) findViewById(R.id.login_password_edit_text);
         progress_bar = (ProgressBar) findViewById(R.id.login_progress_bar);
 
-        findViewById(R.id.login_create_new_account_button).setOnClickListener(this);
         findViewById(R.id.login_create_account_button).setOnClickListener(this);
 
         progress_bar.setVisibility(View.INVISIBLE);
+
+        current_user = new ViewDatabase();
     }
 
     private void userLogin() {
@@ -75,9 +79,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progress_bar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+
+                    if(current_user.is_manager) {
+
+                        Intent intent = new Intent(LoginActivity.this, ManagerHomePageActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    else {
+
+                        Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
+                    }
+
                 }else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -88,9 +104,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_create_new_account_button:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
 
             case R.id.login_create_account_button:
                 userLogin();

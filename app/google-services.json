@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "808116441721-9hkoa9fjthh1mcllstomq0hhb0o08ad9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beitshean.mylaundry",
+            "certificate_hash": "601c2830a275033ace08dd0aeedf63fc8d4cef96"
+          }
+        },
+        {
           "client_id": "808116441721-59a4jrsa7tje5pmgf5vq6r9g0m47olhb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
