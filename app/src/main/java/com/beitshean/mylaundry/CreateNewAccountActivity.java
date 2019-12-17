@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class CreateNewAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText email_edit_text, password_edit_text, confirm_password_edit_text;
+    EditText full_name_edit_text, phone_edit_text, email_edit_text, password_edit_text, confirm_password_edit_text;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,20 +28,35 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
 
-        email_edit_text = (EditText) findViewById(R.id.cna_email_edit_text);
-        password_edit_text = (EditText) findViewById(R.id.cna_password_edit_text);
-        confirm_password_edit_text = (EditText) findViewById(R.id.cna_confirm_password_edit_text);
+        full_name_edit_text = findViewById(R.id.cna_full_name_edit_text);
+        phone_edit_text = findViewById(R.id.cna_phone_edit_text);
+        email_edit_text = findViewById(R.id.cna_email_edit_text);
+        password_edit_text = findViewById(R.id.cna_password_edit_text);
+        confirm_password_edit_text = findViewById(R.id.cna_confirm_password_edit_text);
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.login_connect_button).setOnClickListener(this);
-
     }
 
     public void registerUser() {
 
+        String full_name = full_name_edit_text.getText().toString().trim();
+        String phone = phone_edit_text.getText().toString().trim();
         String email = email_edit_text.getText().toString().trim();
         String password = password_edit_text.getText().toString().trim();
         String confirm_password = confirm_password_edit_text.getText().toString().trim();
+
+        if(full_name.isEmpty()) {
+            full_name_edit_text.setError("אנא הכנס שם מלא");
+            full_name_edit_text.requestFocus();
+            return;
+        }
+
+        if(phone.isEmpty()) {
+            phone_edit_text.setError("אנא הכנס מספר טלפון");
+            phone_edit_text.requestFocus();
+            return;
+        }
 
         if(email.isEmpty()) {
             email_edit_text.setError("אנא הכנס אימייל");
@@ -58,6 +73,18 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         if(confirm_password.isEmpty()) {
             confirm_password_edit_text.setError("אנא אמת סיסמא");
             confirm_password_edit_text.requestFocus();
+            return;
+        }
+
+        if(!full_name.contains(" ")) {
+            full_name_edit_text.setError("אנא הכנס שם מלא");
+            full_name_edit_text.requestFocus();
+            return;
+        }
+
+        if(phone.length() != 10) {
+            phone_edit_text.setError("אנא הכנס מספר טלפון תקין");
+            phone_edit_text.requestFocus();
             return;
         }
 
