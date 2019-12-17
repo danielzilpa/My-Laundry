@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class CreateNewAccountActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseAuth mAuth;
     EditText email_edit_text, password_edit_text;
@@ -26,7 +26,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
         email_edit_text = (EditText) findViewById(R.id.login_email_edit_text);
@@ -34,7 +34,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
         progress_bar = (ProgressBar) findViewById(R.id.login_progress_bar);
 
         findViewById(R.id.login_create_new_account_button).setOnClickListener(this);
-        findViewById(R.id.login_connect_button).setOnClickListener(this);
+        findViewById(R.id.login_create_account_button).setOnClickListener(this);
 
         progress_bar.setVisibility(View.INVISIBLE);
     }
@@ -75,7 +75,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progress_bar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(CreateNewAccountActivity.this, UserHomePageActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else {
@@ -89,10 +89,10 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_create_new_account_button:
-                startActivity(new Intent(this, CreateNewAccountActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
 
-            case R.id.login_connect_button:
+            case R.id.login_create_account_button:
                 userLogin();
                 break;
         }

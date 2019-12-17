@@ -7,9 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_account);
+        setContentView(R.layout.activity_main);
 
         full_name_edit_text = findViewById(R.id.cna_full_name_edit_text);
         phone_edit_text = findViewById(R.id.cna_phone_edit_text);
@@ -36,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         confirm_password_edit_text = findViewById(R.id.cna_confirm_password_edit_text);
         mAuth = FirebaseAuth.getInstance();
 
-        findViewById(R.id.login_connect_button).setOnClickListener(this);
+        findViewById(R.id.login_create_account_button).setOnClickListener(this);
+        findViewById(R.id.login_already_have_account_button).setOnClickListener(this);
     }
 
     public void registerUser() {
@@ -144,8 +143,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()){
 
-            case R.id.login_connect_button:
+            case R.id.login_create_account_button:
                 registerUser();
+                break;
+
+            case R.id.login_already_have_account_button:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }
