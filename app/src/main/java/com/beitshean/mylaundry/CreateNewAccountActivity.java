@@ -83,6 +83,7 @@ public class CreateNewAccountActivity extends AppCompatActivity implements View.
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+
                     Intent intent = new Intent(CreateNewAccountActivity.this, UserHomePageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
