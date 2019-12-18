@@ -8,7 +8,7 @@
     android:background="@drawable/my_laundry_background3">
 
     <TextView
-        android:id="@+id/meo_existing_orders_text_view2"
+        android:id="@+id/meo_existing_orders_text_view"
         android:layout_width="234dp"
         android:layout_height="40dp"
         android:text="ההזמנות הקיימות:"
@@ -19,4 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.189" />
+
+    <ListView
+        android:id="@+id/meo_existing_orders_list_view"
+        android:layout_width="409dp"
+        android:layout_height="558dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="172dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ManagerHomePageActivity extends AppCompatActivity {
+public class ManagerHomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseAuth mAuth;
     DatabaseReference reff;
@@ -29,6 +30,8 @@ public class ManagerHomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manager_home_page);
 
         full_name_edit_text = (TextView) findViewById(R.id.mhp_full_name_text_view);
+
+        findViewById(R.id.mho_existing_orders_button).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
@@ -45,5 +48,15 @@ public class ManagerHomePageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            case R.id.mho_existing_orders_button:
+                startActivity(new Intent(ManagerHomePageActivity.this, ManagerExistingOrdersActivity.class));
+                break;
+        }
     }
 }

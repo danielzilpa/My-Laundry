@@ -21,6 +21,10 @@ public class Order {
     String user_full_name;
     String uid;
 
+    public Order () {
+
+    }
+
     public Order(double weight, boolean is_ironing, boolean is_delivery, double price) {
         this.weight = weight;
         this.is_ironing = is_ironing;
@@ -28,9 +32,6 @@ public class Order {
         this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_email = getUserEmail();
-
-        //System.out.println("The user email is: " + user_email);
-
     }
 
     public Order(boolean is_ironing, boolean is_delivery, double price) {
@@ -39,6 +40,14 @@ public class Order {
         this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_email = getUserEmail();
+    }
+
+    public Order (Order other) {
+        this.is_ironing = other.is_ironing;
+        this.is_delivery = other.is_delivery;
+        this.price = other.price;
+        this.order_status = new String(other.order_status);
+        this.user_email = other.getUserEmail();
     }
 
     private String getUserEmail() {
