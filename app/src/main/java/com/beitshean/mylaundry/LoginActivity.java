@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -16,6 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,7 +27,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText email_edit_text, password_edit_text;
     ProgressBar progress_bar;
 
-    ViewDatabase current_user;
+    DatabaseReference reff;
+    String user_full_name, user_email, user_phone, user_is_manager;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +42,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password_edit_text = (EditText) findViewById(R.id.login_password_edit_text);
         progress_bar = (ProgressBar) findViewById(R.id.login_progress_bar);
 
+        findViewById(R.id.login_create_new_account_button).setOnClickListener(this);
         findViewById(R.id.login_create_account_button).setOnClickListener(this);
 
         progress_bar.setVisibility(View.INVISIBLE);
-
-        current_user = new ViewDatabase();
     }
 
     private void userLogin() {
@@ -80,19 +85,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 progress_bar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
 
-                    if(current_user.is_manager) {
+                    uid = mAuth.getUid();
+                    reff = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+                    reff.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            user_full_name = dataSnapshot.child("fullName").getValue().toString();
+                            user_email = dataSnapshot.child("email").getValue().toString();
+                            user_phone = dataSnapshot.child("phone").getValue().toString();
+                            user_is_manager = dataSnapshot.child("isManager").getValue().toString();
 
-                        Intent intent = new Intent(LoginActivity.this, ManagerHomePageActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                    else {
+                            if(user_is_manager.equals("true")) {
+                                Intent intent = new Intent(LoginActivity.this, ManagerHomePageActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }else {
+                                Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        }
 
-                        Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
+                        }
+                    });
 
                 }else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -104,6 +122,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.login_create_new_account_button:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
 
             case R.id.login_create_account_button:
                 userLogin();
