@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password_edit_text = (EditText) findViewById(R.id.login_password_edit_text);
         progress_bar = (ProgressBar) findViewById(R.id.login_progress_bar);
 
-        findViewById(R.id.login_create_new_account_button).setOnClickListener(this);
         findViewById(R.id.login_create_account_button).setOnClickListener(this);
 
         progress_bar.setVisibility(View.INVISIBLE);
@@ -122,9 +121,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_create_new_account_button:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
 
             case R.id.login_create_account_button:
                 userLogin();
