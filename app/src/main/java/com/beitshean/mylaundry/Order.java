@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 
-public class OrderOption {
+public class Order {
 
     public static int count = 0;
     public static String user_email;
@@ -26,25 +26,26 @@ public class OrderOption {
     String user_full_name;
     String uid;
 
-    public OrderOption(double weight, boolean is_ironing, boolean is_delivery) {
+    public Order(double weight, boolean is_ironing, boolean is_delivery, double price) {
         count++;
         this.order_number = count;
         this.weight = weight;
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
+        this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_email = getUserEmail();
-        this.price = calculateOrderPrice();
+
     }
 
-    public OrderOption(boolean is_ironing, boolean is_delivery) {
+    public Order(boolean is_ironing, boolean is_delivery, double price) {
         count++;
         this.order_number = count;
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
+        this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_email = getUserEmail();
-        this.price = calculateOrderPrice();
     }
 
     private String getUserEmail() {
@@ -64,24 +65,5 @@ public class OrderOption {
             }
         });
         return user_email;
-    }
-
-    private double calculateOrderPrice() {
-
-        double price = 0;
-
-        if (weight != 0) {
-            price = price + weight * 15;
-        }
-
-        if (is_ironing && weight != 0) {
-            price = price + weight * 10;
-        }
-
-        if (is_delivery) {
-            price = price + 30;
-        }
-
-        return price;
     }
 }

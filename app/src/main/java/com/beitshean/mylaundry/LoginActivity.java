@@ -38,9 +38,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-        email_edit_text = (EditText) findViewById(R.id.login_email_edit_text);
-        password_edit_text = (EditText) findViewById(R.id.login_password_edit_text);
-        progress_bar = (ProgressBar) findViewById(R.id.login_progress_bar);
+        email_edit_text = findViewById(R.id.login_email_edit_text);
+        password_edit_text = findViewById(R.id.login_password_edit_text);
+        progress_bar = findViewById(R.id.login_progress_bar);
 
         findViewById(R.id.login_create_account_button).setOnClickListener(this);
 
