@@ -20,10 +20,13 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
 
     public static double price;
 
+    FirebaseAuth mAuth;
     EditText weight_edit_text;
     CheckBox is_ironing_check_box, is_delivery_check_box;
     TextView price_option_text_view;
     double weight;
+    String uid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +37,12 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
         findViewById(R.id.uhw_make_order_button).setOnClickListener(this);
 
         price_option_text_view = findViewById(R.id.uhw_price_option_text_view);
-
         weight_edit_text = findViewById(R.id.uhw_weight_edit_text);
-
         is_ironing_check_box = findViewById(R.id.uhw_ironing_check_box);
         is_delivery_check_box = findViewById(R.id.uhw_delivery_check_box);
+
+        mAuth = FirebaseAuth.getInstance();
+        uid = mAuth.getUid();
     }
 
 
@@ -67,19 +71,18 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
 
             case R.id.uhw_make_order_button:
                 weight = Double.valueOf(weight_edit_text.getText().toString());
-                Order order = new Order(weight, is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), price);
+                Order order = new Order(weight, is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), price, uid);
 
-                String random = String.valueOf(System.currentTimeMillis());
+                String order_id = String.valueOf(System.currentTimeMillis());
 
                 FirebaseDatabase.getInstance().getReference("Orders")
-                        .child(random).setValue(order)
+                        .child(order_id).setValue(order)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
                             }
                         });
-
                 break;
         }
     }

@@ -14,7 +14,7 @@ public class Order {
     public double price;
     public double weight = 0;
     public boolean is_ironing, is_delivery;
-    public String order_status, user_email;
+    public String order_status, user_id;
 
     FirebaseAuth mAuth;
     DatabaseReference reff;
@@ -25,21 +25,21 @@ public class Order {
 
     }
 
-    public Order(double weight, boolean is_ironing, boolean is_delivery, double price) {
+    public Order(double weight, boolean is_ironing, boolean is_delivery, double price, String user_id) {
         this.weight = weight;
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
         this.price = price;
         this.order_status = "ההזמנה התקבלה";
-        this.user_email = getUserEmail();
+        this.user_id = user_id;
     }
 
-    public Order(boolean is_ironing, boolean is_delivery, double price) {
+    public Order(boolean is_ironing, boolean is_delivery, double price, String user_id) {
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
         this.price = price;
         this.order_status = "ההזמנה התקבלה";
-        this.user_email = getUserEmail();
+        this.user_id = user_id;
     }
 
     public Order (Order other) {
@@ -47,25 +47,38 @@ public class Order {
         this.is_delivery = other.is_delivery;
         this.price = other.price;
         this.order_status = new String(other.order_status);
-        this.user_email = other.getUserEmail();
+        this.user_id = other.user_id;
     }
 
-    private String getUserEmail() {
+    public String toString() {
 
-        mAuth = FirebaseAuth.getInstance();
-        uid = mAuth.getUid();
-        reff = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user_email = dataSnapshot.child("email").getValue().toString();
-            }
+        if (is_delivery && is_ironing) {
+            return "סטטוס הזמנתך: " + this.order_status + "\n" +
+                    "פרטי ההזמנה:\n" +
+                    "משקל: " + this.weight + "\n" +
+                    "כולל גיהוץ ומשלוח\n" +
+                    "מחיר: " + this.price + "\n";
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        } else if (!is_delivery && is_ironing) {
+            return "סטטוס הזמנתך: " + this.order_status + "\n" +
+                    "פרטי ההזמנה:\n" +
+                    "משקל: " + this.weight + "\n" +
+                    "כולל גיהוץ ולא כולל משלוח\n" +
+                    "מחיר: " + this.price + "\n";
 
-            }
-        });
-        return user_email;
+        } else if (is_delivery && !is_ironing) {
+            return "סטטוס הזמנתך: " + this.order_status + "\n" +
+                    "פרטי ההזמנה:\n" +
+                    "משקל: " + this.weight + "\n" +
+                    "כולל משלוח ולא כולל גיהוץ\n" +
+                    "מחיר: " + this.price + "\n";
+
+        } else {
+            return "סטטוס הזמנתך: " + this.order_status + "\n" +
+                    "פרטי ההזמנה:\n" +
+                    "משקל: " + this.weight + "\n" +
+                    "לא כולל גיהוץ ומשלוח\n" +
+                    "מחיר: " + this.price + "\n";
+        }
     }
 }
