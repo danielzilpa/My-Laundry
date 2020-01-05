@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String EXTRA_FULL_NAME = "com.beitshean.mylaundry.EXTRA_FULL_NAME";
+
     EditText full_name_edit_text, phone_edit_text, email_edit_text, password_edit_text, confirm_password_edit_text;
     private FirebaseAuth mAuth;
 
@@ -122,10 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 }
                             });
 
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-
                 } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                     email_edit_text.setError("אימייל זה בשימוש");
                     email_edit_text.requestFocus();
@@ -136,6 +134,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+
+        Intent intent = new Intent(this, UserHomePageActivity.class);
+        intent.putExtra(EXTRA_FULL_NAME, full_name);
+        startActivity(intent);
     }
 
     @Override

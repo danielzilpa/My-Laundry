@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagerHomePageActivity"
-    android:background="@drawable/my_laundry_background3">
+    android:background="@drawable/my_laundry_background3"
+    tools:context=".ManagerHomePageActivity">
 
     <Button
         android:id="@+id/mho_existing_orders_button"
@@ -62,28 +62,15 @@
         app:layout_constraintVertical_bias="0.956" />
 
     <TextView
-        android:id="@+id/mho_hellow_text_view2"
-        android:layout_width="75dp"
-        android:layout_height="43dp"
-        android:text="שלום"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
-
-    <TextView
         android:id="@+id/mhp_full_name_text_view"
-        android:layout_width="160dp"
+        android:layout_width="209dp"
         android:layout_height="41dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.208" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

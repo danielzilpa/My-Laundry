@@ -17,10 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserHomePageActivity extends AppCompatActivity implements View.OnClickListener{
 
-    FirebaseAuth mAuth;
-    DatabaseReference reff;
     String user_full_name;
-    String uid;
     TextView full_name_edit_text;
 
     @Override
@@ -30,23 +27,13 @@ public class UserHomePageActivity extends AppCompatActivity implements View.OnCl
 
         findViewById(R.id.uho_make_new_order_button).setOnClickListener(this);
         findViewById(R.id.uho_my_orders_button).setOnClickListener(this);
+        findViewById(R.id.uho_disconnect_button).setOnClickListener(this);
         full_name_edit_text = (TextView) findViewById(R.id.uhp_full_name_text_view);
 
-        mAuth = FirebaseAuth.getInstance();
-        uid = mAuth.getUid();
-        reff = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user_full_name = dataSnapshot.child("fullName").getValue().toString();
-                full_name_edit_text.setText(user_full_name);
-            }
+        Intent intent = getIntent();
+        String full_name = intent.getStringExtra(MainActivity.EXTRA_FULL_NAME);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        full_name_edit_text.setText("שלום "+full_name);
     }
 
     @Override
@@ -59,6 +46,10 @@ public class UserHomePageActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.uho_my_orders_button:
                 startActivity(new Intent(this, UserExistingOrdersActivity.class));
+                break;
+
+            case R.id.uho_disconnect_button:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }

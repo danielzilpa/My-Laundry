@@ -23,10 +23,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String EXTRA_FULL_NAME = "com.beitshean.mylaundry.EXTRA_FULL_NAME";
+
     FirebaseAuth mAuth;
     EditText email_edit_text, password_edit_text;
     ProgressBar progress_bar;
-
     DatabaseReference reff;
     String user_full_name, user_email, user_phone, user_is_manager;
     String uid;
@@ -90,17 +91,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             user_full_name = dataSnapshot.child("fullName").getValue().toString();
-                            user_email = dataSnapshot.child("email").getValue().toString();
-                            user_phone = dataSnapshot.child("phone").getValue().toString();
                             user_is_manager = dataSnapshot.child("isManager").getValue().toString();
 
                             if(user_is_manager.equals("true")) {
                                 Intent intent = new Intent(LoginActivity.this, ManagerHomePageActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.putExtra(EXTRA_FULL_NAME, user_full_name);
                                 startActivity(intent);
                             }else {
                                 Intent intent = new Intent(LoginActivity.this, UserHomePageActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.putExtra(EXTRA_FULL_NAME, user_full_name);
                                 startActivity(intent);
                             }
                         }

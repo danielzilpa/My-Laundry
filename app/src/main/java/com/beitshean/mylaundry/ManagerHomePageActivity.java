@@ -32,6 +32,7 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
         full_name_edit_text = (TextView) findViewById(R.id.mhp_full_name_text_view);
 
         findViewById(R.id.mho_existing_orders_button).setOnClickListener(this);
+        findViewById(R.id.mho_disconnect_button2).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
@@ -40,7 +41,7 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user_full_name = dataSnapshot.child("fullName").getValue().toString();
-                full_name_edit_text.setText(user_full_name);
+                full_name_edit_text.setText("שלום "+user_full_name);
             }
 
             @Override
@@ -56,6 +57,10 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
 
             case R.id.mho_existing_orders_button:
                 startActivity(new Intent(ManagerHomePageActivity.this, ManagerExistingOrdersActivity.class));
+                break;
+
+            case R.id.mho_disconnect_button2:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }

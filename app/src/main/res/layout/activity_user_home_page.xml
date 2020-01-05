@@ -4,34 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/my_laundry_background3"
     android:visibility="visible"
-    tools:context=".UserHomePageActivity"
-    android:background="@drawable/my_laundry_background3">
+    tools:context=".UserHomePageActivity">
 
     <TextView
         android:id="@+id/uhp_full_name_text_view"
-        android:layout_width="146dp"
-        android:layout_height="45dp"
+        android:layout_width="257dp"
+        android:layout_height="50dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
-
-    <TextView
-        android:id="@+id/uho_hellow_text_view"
-        android:layout_width="75dp"
-        android:layout_height="43dp"
-        android:text="שלום"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <Button
         android:id="@+id/uho_make_new_order_button"
