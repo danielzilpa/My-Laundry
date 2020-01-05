@@ -8,7 +8,7 @@
     android:background="@drawable/my_laundry_background3">
 
     <TextView
-        android:id="@+id/ueo_your_orders_text_view"
+        android:id="@+id/meo_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ההזמנות שלך:"

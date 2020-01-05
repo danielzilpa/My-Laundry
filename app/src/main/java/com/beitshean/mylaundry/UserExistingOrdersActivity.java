@@ -35,7 +35,7 @@ public class UserExistingOrdersActivity extends AppCompatActivity {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(Order.class).toString();
+                String value = dataSnapshot.getValue(Order.class).toStringUser();
                 arrayList.add(value);
                 arrayAdapter.notifyDataSetChanged();
             }
