@@ -33,6 +33,8 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
 
         findViewById(R.id.mho_existing_orders_button).setOnClickListener(this);
         findViewById(R.id.mho_disconnect_button2).setOnClickListener(this);
+        findViewById(R.id.mho_sum_materials_button).setOnClickListener(this);
+        findViewById(R.id.mho_sum_cash_button).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
@@ -61,6 +63,10 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
 
             case R.id.mho_disconnect_button2:
                 startActivity(new Intent(this, LoginActivity.class));
+                break;
+
+            case R.id.mho_sum_materials_button:
+                startActivity(new Intent(this, MaterialsActivity.class));
                 break;
         }
     }
