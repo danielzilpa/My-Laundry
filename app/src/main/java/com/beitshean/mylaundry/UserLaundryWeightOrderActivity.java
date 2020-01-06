@@ -42,9 +42,9 @@ public class UserLaundryWeightOrderActivity extends AppCompatActivity implements
         switch (view.getId()) {
 
             case R.id.ulw_make_order_button:
-                Order order = new Order(is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), uid);
 
                 String order_id = String.valueOf(System.currentTimeMillis());
+                Order order = new Order(is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), uid, order_id);
 
                 FirebaseDatabase.getInstance().getReference("Orders")
                         .child(order_id).setValue(order)

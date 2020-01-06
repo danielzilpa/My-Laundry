@@ -74,9 +74,8 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
 
             case R.id.uhw_make_order_button:
                 weight = Double.valueOf(weight_edit_text.getText().toString());
-                Order order = new Order(weight, is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), price, uid);
-
                 String order_id = String.valueOf(System.currentTimeMillis());
+                Order order = new Order(weight, is_ironing_check_box.isChecked(), is_delivery_check_box.isChecked(), price, uid, order_id);
 
                 FirebaseDatabase.getInstance().getReference("Orders")
                         .child(order_id).setValue(order)

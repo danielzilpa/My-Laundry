@@ -14,26 +14,28 @@ public class Order {
     public double price;
     public double weight = 0;
     public boolean is_ironing, is_delivery;
-    public String order_status, user_id;
+    public String order_status, user_id, order_id;
 
     public Order () {
 
     }
 
-    public Order(double weight, boolean is_ironing, boolean is_delivery, double price, String user_id) {
+    public Order(double weight, boolean is_ironing, boolean is_delivery, double price, String user_id, String order_id) {
         this.weight = weight;
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
         this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_id = user_id;
+        this.order_id = order_id;
     }
 
-    public Order(boolean is_ironing, boolean is_delivery, String user_id) {
+    public Order(boolean is_ironing, boolean is_delivery, String user_id, String order_id) {
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
         this.order_status = "ההזמנה התקבלה";
         this.user_id = user_id;
+        this.order_id = order_id;
     }
 
     public Order (Order other) {
@@ -42,6 +44,7 @@ public class Order {
         this.price = other.price;
         this.order_status = new String(other.order_status);
         this.user_id = other.user_id;
+        this.order_id = other.order_id;
     }
 
     public String toString() {
