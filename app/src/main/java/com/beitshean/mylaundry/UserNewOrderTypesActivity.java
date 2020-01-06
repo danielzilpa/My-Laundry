@@ -24,9 +24,9 @@ public class UserNewOrderTypesActivity extends AppCompatActivity implements View
                 startActivity(new Intent(UserNewOrderTypesActivity.this, UserHomeWeightOrderActivity.class));
                 break;
 
-            //case R.id.unot_laundry_weight_button:
-                //startActivity(new Intent(this, .class));
-               // break;
+            case R.id.unot_laundry_weight_button:
+                startActivity(new Intent(UserNewOrderTypesActivity.this, UserLaundryWeightOrderActivity.class));
+                break;
         }
     }
 }

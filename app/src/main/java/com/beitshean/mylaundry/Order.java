@@ -29,10 +29,9 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public Order(boolean is_ironing, boolean is_delivery, double price, String user_id) {
+    public Order(boolean is_ironing, boolean is_delivery, String user_id) {
         this.is_ironing = is_ironing;
         this.is_delivery = is_delivery;
-        this.price = price;
         this.order_status = "ההזמנה התקבלה";
         this.user_id = user_id;
     }

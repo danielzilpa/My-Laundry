@@ -8,6 +8,38 @@
     android:background="@drawable/my_laundry_background3">
 
     <TextView
+        android:id="@+id/uhw_follow_order_edit_text"
+        android:layout_width="309dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#31429C"
+        android:textColorLink="#31429C"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <TextView
+        android:id="@+id/uhw_order_complete_edit_text"
+        android:layout_width="245dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#31429C"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795" />
+
+    <TextView
         android:id="@+id/uhw_weight_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,8 +93,8 @@
 
     <EditText
         android:id="@+id/uhw_weight_edit_text"
-        android:layout_width="168dp"
-        android:layout_height="39dp"
+        android:layout_width="138dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -17,8 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserHomePageActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String user_full_name;
-    TextView full_name_edit_text;
+    TextView full_name_text_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +27,12 @@ public class UserHomePageActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.uho_make_new_order_button).setOnClickListener(this);
         findViewById(R.id.uho_my_orders_button).setOnClickListener(this);
         findViewById(R.id.uho_disconnect_button).setOnClickListener(this);
-        full_name_edit_text = (TextView) findViewById(R.id.uhp_full_name_text_view);
+        full_name_text_view = (TextView) findViewById(R.id.uhp_full_name_text_view);
 
         Intent intent = getIntent();
         String full_name = intent.getStringExtra(MainActivity.EXTRA_FULL_NAME);
 
-        full_name_edit_text.setText("שלום "+full_name);
+        full_name_text_view.setText("שלום "+full_name);
     }
 
     @Override

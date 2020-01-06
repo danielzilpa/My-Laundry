@@ -26,6 +26,7 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
     TextView price_option_text_view;
     double weight;
     String uid;
+    TextView order_complete_text_view, follow_order_text_view;
 
 
     @Override
@@ -40,6 +41,8 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
         weight_edit_text = findViewById(R.id.uhw_weight_edit_text);
         is_ironing_check_box = findViewById(R.id.uhw_ironing_check_box);
         is_delivery_check_box = findViewById(R.id.uhw_delivery_check_box);
+        order_complete_text_view = findViewById(R.id.uhw_order_complete_edit_text);
+        follow_order_text_view = findViewById(R.id.uhw_follow_order_edit_text);
 
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
@@ -83,6 +86,10 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
 
                             }
                         });
+
+                price_option_text_view.setText("");
+                order_complete_text_view.setText("ההזמנה התקבלה");
+                follow_order_text_view.setText("ניתן לעקוב אחריה תחת ההזמנות שלי");
                 break;
         }
     }
