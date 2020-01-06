@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText full_name_edit_text, phone_edit_text, email_edit_text, password_edit_text, confirm_password_edit_text;
     private FirebaseAuth mAuth;
+    ProgressBar progress_bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         email_edit_text = findViewById(R.id.cna_email_edit_text);
         password_edit_text = findViewById(R.id.cna_password_edit_text);
         confirm_password_edit_text = findViewById(R.id.cna_confirm_password_edit_text);
+        progress_bar = findViewById(R.id.cna_progress_bar);
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.login_create_account_button).setOnClickListener(this);
         findViewById(R.id.login_already_have_account_button).setOnClickListener(this);
+
+        progress_bar.setVisibility(View.INVISIBLE);
     }
 
     public void registerUser() {
@@ -134,6 +139,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+
+        progress_bar.setVisibility(View.VISIBLE);
 
         Intent intent = new Intent(this, UserHomePageActivity.class);
         intent.putExtra(EXTRA_FULL_NAME, full_name);
