@@ -7,4 +7,12 @@
         <item>ההזמנה בתהליך</item>
         <item>ההזמנה הושלמה</item>
     </string-array>
+
+
+    <string-array name="materials">
+        <item>בחר מוצר</item>
+        <item>גל כביסה</item>
+        <item>מרכך כביסה</item>
+        <item>מסיר כתמים</item>
+    </string-array>
 </resources>
