@@ -37,7 +37,7 @@ public class ManagerExistingOrdersActivity extends AppCompatActivity {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(Order.class).toStringManager();
+                String value = dataSnapshot.getValue(Order.class).toString();
                 arrayList.add(value);
                 arrayAdapter.notifyDataSetChanged();
             }

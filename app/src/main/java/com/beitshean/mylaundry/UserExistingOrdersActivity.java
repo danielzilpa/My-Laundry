@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,8 @@ public class UserExistingOrdersActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
+    FirebaseAuth mAuth;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,15 @@ public class UserExistingOrdersActivity extends AppCompatActivity {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(Order.class).toStringUser();
-                arrayList.add(value);
-                arrayAdapter.notifyDataSetChanged();
+
+                Order order = dataSnapshot.getValue(Order.class);
+                String value = dataSnapshot.getValue(Order.class).toString();
+                mAuth = FirebaseAuth.getInstance();
+                uid = mAuth.getUid();
+                if(order.user_id.equals(uid)) {
+                    arrayList.add(value);
+                    arrayAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
