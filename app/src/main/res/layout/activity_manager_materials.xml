@@ -145,6 +145,19 @@
         app:layout_constraintVertical_bias="0.804" />
 
     <EditText
+        android:id="@+id/materials_edit_text"
+        android:layout_width="115dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.705" />
+
+    <EditText
         android:id="@+id/materials_update_sum_number_edit_text"
         android:layout_width="98dp"
         android:layout_height="41dp"

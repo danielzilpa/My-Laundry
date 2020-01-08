@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ManagerMaterialsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     TextView actual_gel_sum_text_view, actual_softener_sum_text_view, actual_stain_remover_sum_text_view,update_done_text_view;
-    EditText update_sum_number_edit_text;
+    EditText update_sum_number_edit_text, materials_edit_text;
     String sum_gel, sum_softener, sum_stain_remover, selected_material;
     FirebaseAuth mAuth;
     DatabaseReference reff;
@@ -36,6 +36,7 @@ public class ManagerMaterialsActivity extends AppCompatActivity implements View.
         actual_stain_remover_sum_text_view = findViewById(R.id.materials_actual_stain_remover_sum_text_view);
         update_sum_number_edit_text = findViewById(R.id.materials_update_sum_number_edit_text);
         update_done_text_view = findViewById(R.id.materials_update_done_text_view);
+        materials_edit_text = findViewById(R.id.materials_edit_text);
         findViewById(R.id.materials_update_button).setOnClickListener(this);
 
         Spinner spinner = findViewById(R.id.materials_spinner);
@@ -68,6 +69,20 @@ public class ManagerMaterialsActivity extends AppCompatActivity implements View.
     private void updateMaterials() {
 
          String sum_update = update_sum_number_edit_text.getText().toString().trim();
+
+         try{
+             Integer.parseInt(sum_update);
+         }catch (Exception e) {
+             update_sum_number_edit_text.setError("אנא הכנס מספר שלם");
+             update_sum_number_edit_text.requestFocus();
+             return;
+         }
+
+         if(selected_material.equals("בחר מוצר")){
+             materials_edit_text.setError("אנא בחר מוצר לעדכון");
+             materials_edit_text.requestFocus();
+             return;
+         }
 
         if(selected_material.equals("גל כביסה")) {
             selected_material = "gel";

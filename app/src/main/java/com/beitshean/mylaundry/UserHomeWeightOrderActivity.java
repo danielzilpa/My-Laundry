@@ -48,8 +48,15 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
         uid = mAuth.getUid();
     }
 
-
     private void calculateOrderPrice() {
+
+        try{
+            Double.parseDouble(weight_edit_text.getText().toString());
+        }catch (Exception e) {
+            weight_edit_text.setError("אנא הכנס משקל תקין");
+            weight_edit_text.requestFocus();
+            return;
+        }
 
         weight = Double.valueOf(weight_edit_text.getText().toString());
 
