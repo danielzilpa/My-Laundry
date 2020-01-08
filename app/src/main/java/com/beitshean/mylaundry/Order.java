@@ -50,29 +50,29 @@ public class Order {
     public String toString() {
 
         if (is_delivery && is_ironing) {
-            return "סטטוס ההזמנה: " + this.order_status + "\n" +
-                    "פרטי ההזמנה:\n" +
+            return "סטטוס הזמנה: " + this.order_status + "\n" +
+                    "מספר הזמנה: " + order_id + "\n" +
                     "משקל: " + this.weight + "\n" +
                     "כולל גיהוץ ומשלוח\n" +
                     "מחיר: " + this.price + "\n";
 
         } else if (!is_delivery && is_ironing) {
-            return "סטטוס ההזמנה: " + this.order_status + "\n" +
-                    "פרטי ההזמנה:\n" +
+            return "סטטוס הזמנה: " + this.order_status + "\n" +
+                    "מספר הזמנה: " + order_id + "\n" +
                     "משקל: " + this.weight + "\n" +
                     "כולל גיהוץ ולא כולל משלוח\n" +
                     "מחיר: " + this.price + "\n";
 
         } else if (is_delivery && !is_ironing) {
-            return "סטטוס ההזמנה: " + this.order_status + "\n" +
-                    "פרטי ההזמנה:\n" +
+            return "סטטוס הזמנה: " + this.order_status + "\n" +
+                    "מספר הזמנה: " + order_id + "\n" +
                     "משקל: " + this.weight + "\n" +
                     "כולל משלוח ולא כולל גיהוץ\n" +
                     "מחיר: " + this.price + "\n";
 
         } else {
-            return "סטטוס ההזמנה: " + this.order_status + "\n" +
-                    "פרטי ההזמנה:\n" +
+            return "סטטוס הזמנה: " + this.order_status + "\n" +
+                    "מספר הזמנה: " + order_id + "\n" +
                     "משקל: " + this.weight + "\n" +
                     "לא כולל גיהוץ ומשלוח\n" +
                     "מחיר: " + this.price + "\n";
