@@ -69,5 +69,7 @@ public class UserExistingOrdersActivity extends AppCompatActivity {
 
             }
         });
+
+        listView.setEmptyView(findViewById(R.id.ueo_no_orders_text_view));
     }
 }

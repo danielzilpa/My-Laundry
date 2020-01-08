@@ -79,6 +79,8 @@ public class ManagerExistingOrdersActivity extends AppCompatActivity implements 
 
             }
         });
+
+        listView.setEmptyView(findViewById(R.id.meo_no_orders_text_view));
     }
 
     @Override
