@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MaterialsActivity"></activity>
+        <activity android:name=".ManagerCashActivity"></activity>
+        <activity android:name=".ManagerMaterialsActivity" />
         <activity android:name=".UserLaundryWeightOrderActivity" />
         <activity android:name=".UserHomeWeightOrderActivity" />
         <activity android:name=".ManagerExistingOrdersActivity" />

@@ -3,7 +3,6 @@ package com.beitshean.mylaundry;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MaterialsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class ManagerMaterialsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     TextView actual_gel_sum_text_view, actual_softener_sum_text_view, actual_stain_remover_sum_text_view,update_done_text_view;
     EditText update_sum_number_edit_text;
@@ -30,7 +29,7 @@ public class MaterialsActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_materials);
+        setContentView(R.layout.activity_manager_materials);
 
         actual_gel_sum_text_view = findViewById(R.id.materials_actual_gel_sum_text_view);
         actual_softener_sum_text_view = findViewById(R.id.materials_actual_softener_sum_text_view);

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,7 +65,11 @@ public class ManagerHomePageActivity extends AppCompatActivity implements View.O
                 break;
 
             case R.id.mho_sum_materials_button:
-                startActivity(new Intent(this, MaterialsActivity.class));
+                startActivity(new Intent(this, ManagerMaterialsActivity.class));
+                break;
+
+            case R.id.mho_sum_cash_button:
+                startActivity(new Intent(this, ManagerCashActivity.class));
                 break;
         }
     }
