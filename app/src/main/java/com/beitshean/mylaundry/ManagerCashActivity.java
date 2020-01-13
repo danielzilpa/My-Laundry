@@ -31,6 +31,8 @@ public class ManagerCashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_cash);
 
+        sum = 0;
+
         text_view = findViewById(R.id.mc_text_view);
         sum_text_view = findViewById(R.id.mc_sum_text_view);
 

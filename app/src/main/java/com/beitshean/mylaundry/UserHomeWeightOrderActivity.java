@@ -60,6 +60,12 @@ public class UserHomeWeightOrderActivity extends AppCompatActivity implements Vi
 
         weight = Double.valueOf(weight_edit_text.getText().toString());
 
+        if(weight<0) {
+            weight_edit_text.setError("אנא הכנס משקל תקין");
+            weight_edit_text.requestFocus();
+            return;
+        }
+
         price = price + weight * 15;
 
         if (is_ironing_check_box.isChecked()) {
